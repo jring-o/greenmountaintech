@@ -93,14 +93,14 @@
                 <div class="timeline-date">Throughout</div>
                 <div class="timeline-content">
                   <h3>Mentor-Led Lessons</h3>
-                  <p>Scheduled 30-60 minute sessions on game development, tech, and civic engagement.</p>
+                  <p>Scheduled virtual or in person 30-60 minute sessions on game development, tech, and civic engagement.</p>
                 </div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-date">Tech Jam Day</div>
                 <div class="timeline-content">
                   <h3>Submission Deadline & Showcase</h3>
-                  <p>Present your game at the Tech Jam! Attendees will play games set up at various sponsor tables around the room and rank their favorites.</p>
+                  <p>Present your game at the Tech Jam. Attendees play and vote for their favorites!</p>
                 </div>
               </div>
               <div class="timeline-item">
@@ -140,7 +140,7 @@
               </div>
               <div class="benefit-card">
                 <h3>Exciting Prizes</h3>
-                <p>Compete for fantastic prizes that will further fuel your passion for tech and innovation.</p>
+                <p>Compete for fantastic prizes!</p>
               </div>
             </div>
           </div>
@@ -170,18 +170,15 @@
 
         <section id="mentors-sponsors" class="section-padding">
           <div class="container">
-            <h2 class="section-title">Our Mentors</h2>
             <div class="partner-section">
               <h3>Mentors</h3>
               <p>Interested in volunteering to mentor teenagers and team leads through the event? We're looking for industry experts, educators, and enthusiasts in tech, gaming, design, and civics to guide participants!</p>
               <a href="mailto:jon@scios.tech" class="btn btn-primary btn-small">Let us know!</a>
-              {/* Placeholder for mentor/judge logos/profiles */}
             </div>
             <div class="partner-section">
               <h3>Sponsors</h3>
-              <p>The Greener Mountain Challenge is an entirely volunteer, grassroots-led initiative. All sponsorships go to direct resource costs of the event and prizes for participants! Interested in supporting an empowered community of the next generation of Vermont innovators.</p>
+              <p>The Greener Mountain Challenge is an entirely volunteer, grassroots-led initiative. All sponsorships go to direct costs of the event and prizes for participants. Interested in supporting the next generation of Vermont innovators?</p>
               <a href="mailto:jon@scios.tech" class="btn btn-primary btn-small">Reach out!</a>
-              {/* Placeholder for sponsor logos */}
             </div>
           </div>
         </section>
@@ -206,5 +203,20 @@
           </div>
         </div>
       </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item h3');
+
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const parent = item.parentElement;
+                    if (parent) {
+                        parent.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
