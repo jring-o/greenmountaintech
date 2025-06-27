@@ -240,7 +240,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGwtb3BhY2l0eT0iMC40IiBmaWxsPSIjMmIyYjRmIj48cGF0aCBkPSJNMjAgMTAuNkwzMC41IDQuNUwyMCAwTjkuNSA0LjVMjAgMTAuNVoiLz48cGF0aCBkPSJNMjAgMjAuNkwzMC41IDE0LjVMMjAgMTBCOS41IDE0LjVMMjAgMjAuNVoiLz48cGF0aCBkPSJNMjAgMzAuNkwzMC41IDI0LjVMMjAgMjBCOS41IDI0LjVMMjAgMzAuNVoiLz48cGF0aCBkPSJNMjAgNDBMMzAuNSAzNC41TDIwIDMwTjkuNSAzNC41TDIwIDQwWiIvPjxwYXRoIGQ9Ik0wIDEwLjVMOS41IDQuNUwwIDBWMTAuNVoiLz48cGF0aCBkPSJNMCAyMC41TDkuNSAxNC41TDAgMTBWMjAuNVoiLz48cGF0aCBkPSJNMCAzMC41TDkuNSAyNC41TDAgMjBWMzAuNVoiLz48cGF0aCBkPSJNMCA0MEw5LjUgMzQuNUwwIDMwVjQwWiIvPjxwYXRoIGQ9Ik00MCAxMC41TDMwLjUgNC41TDUwIDBWMTAuNVoiLz48cGF0aCBkPSJNMzAuNSAxNC41TDUwIDEwVjIwLjVMNDAgMjAuNVoiLz48cGF0aCBkPSJNMzAuNSAyNC41TDUwIDIwVjMwLjVMNDAgMzAuNVoiLz48cGF0aCBkPSJNMzAuNSAzNC41TDUwIDMwVjQwTDUwIDQwWiIvPjwvZz48L2c+PC9zdmc+');
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGwtb3BhY2l0eT0iMC40IiBmaWxsPSIjMmIyYjRmIj48cGF0aCBkPSJNMjAgMTAuNkwzMC41IDQuNUwyMCAwTjkuNSA0LjVMMjAgMTAuNVoiLz48cGF0aCBkPSJNMjAgMjAuNkwzMC41IDE0LjVMMjAgMTBCOS41IDE0LjVMMjAgMjAuNVoiLz48cGF0aCBkPSJNMjAgMzAuNkwzMC41IDI0LjVMMjAgMjBCOS41IDI0LjVMMjAgMzAuNVoiLz48cGF0aCBkPSJNMjAgNDBMMzAuNSAzNC41TDIwIDMwTjkuNSAzNC45OTk5OTk5OTk5OTk5OTYgMjAgNDBaIi8+PHBhdGggZD0iTTAgMTAuNUw5LjUgNC41TDAgMDBWMTAuNVoiLz48cGF0aCBkPSJNMCAyMC41TDkuNSAxNC41TDAgMTBWMjAuNVoiLz48cGF0aCBkPSJNMCAzMC41TDkuNSAyNC41TDAgMjBWMzAuNVoiLz48cGF0aCBkPSJNMCA0MEw5LjUgMzQuNUwwIDMwVjQwWiIvPjxwYXRoIGQ9Ik00MCAxMC45OTk5OTk5OTk5OTk5OTYgMzAuNSA0LjVMNTAgMDBWMTAuNVoiLz48cGF0aCBkPSJNMzAuNSAxNC41TDUwIDEwVjIwLjVMNDAgMjAuNVoiLz48cGF0aCBkPSJNMzAuNSAyNC41TDUwIDIwVjMwLjVMNDAgMzAuNVoiLz48cGF0aCBkPSJNMzAuNSAzNC41TDUwIDMwVjQwTDUwIDQwWiIvPjwvZz48L2g+PC9sZz48L3N2Zz4=');
   opacity: 0.1;
   z-index: 0;
   animation: background-pattern 60s linear infinite;
@@ -311,92 +311,129 @@ p {
   color: var(--text-color);
 }
 
-/* Timeline */
+.challenge-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.challenge-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+}
+
+/* === REVISED TIMELINE SECTION === */
 .timeline {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding-top: 20px;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
 }
 
 .timeline::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background-color: var(--primary-color);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
-  box-shadow: var(--shadow-glow);
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background-color: #39d395; /* Green from screenshot */
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(57, 211, 149, 0.7);
+    margin-left: 0;
 }
 
 .timeline-item {
-  padding: 10px 0;
-  position: relative;
-  width: 50%;
-}
-
-.timeline-item:nth-child(odd) {
-  left: 0;
-  padding-right: 40px;
-  text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  padding-left: 40px;
-  text-align: left;
-}
-
-.timeline-date {
-  padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: var(--dark-bg);
-  border-radius: 25px;
-  font-weight: 700;
-  display: inline-block;
-  margin-bottom: 15px;
-  box-shadow: var(--shadow-glow);
-}
-
-.timeline-content {
-  background-color: var(--light-bg);
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: var(--shadow-dark);
-  border: 1px solid var(--border-color);
-}
-
-.timeline-content h3 {
-  color: var(--primary-color);
-  margin-top: 0;
-}
-
-.timeline-content p {
-  color: var(--text-color);
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
 }
 
 .timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  background-color: var(--primary-color);
-  border: 5px solid var(--dark-bg);
-  top: 25px;
-  border-radius: 50%;
-  z-index: 1;
-  box-shadow: var(--shadow-glow);
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #39d395;
+    border-radius: 50%;
+    top: 55px; /* Adjusted to align with text better */
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(57, 211, 149, 0.7);
+    border: none;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right; /* Aligns bubble and content to the right edge */
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left; /* Aligns bubble and content to the left edge */
 }
 
 .timeline-item:nth-child(odd)::after {
-  right: -12.5px;
+    right: 0;
+    transform: translateX(50%);
 }
 
 .timeline-item:nth-child(even)::after {
-  left: -12.5px;
+    left: 0;
+    transform: translateX(-50%);
 }
+
+.timeline-date {
+    display: inline-block; /* Changed from absolute position */
+    margin-bottom: 15px; /* Space between bubble and content */
+    padding: 6px 16px;
+    background-color: #39d395;
+    color: #0e0e18;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 0 10px rgba(57, 211, 149, 0.7);
+}
+
+.timeline-content {
+    padding: 20px;
+    background: #0e0e18;
+    border-radius: 8px;
+    text-align: left; /* Ensures text inside is always left-aligned */
+    display: inline-block; /* Makes the box wrap its content */
+    width: 100%; /* Ensures it fills the container space */
+    box-sizing: border-box;
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: #39d395;
+    font-size: 1.6em;
+}
+
+.timeline-content p {
+    margin-bottom: 0;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.timeline-img {
+    margin-top: 15px;
+    border-radius: 8px;
+    max-width: 100%;
+    display: block;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 176, 255, 0.6);
+}
+/* === END REVISED TIMELINE SECTION === */
+
 
 /* Benefits Grid */
 .benefits-grid {
@@ -579,34 +616,31 @@ p {
     margin: 0 15px 15px 15px;
   }
 
+  /* UPDATED RESPONSIVE TIMELINE */
   .timeline::after {
     left: 20px;
+    transform: translateX(0);
   }
 
-  .timeline-item {
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
     width: 100%;
     padding-left: 50px;
-    padding-right: 25px;
-    text-align: left;
-  }
-
-  .timeline-item:nth-child(odd) {
+    padding-right: 15px;
     left: 0;
-    padding-right: 25px;
+    margin-bottom: 20px;
+    text-align: left !important;
   }
 
-  .timeline-item:nth-child(even) {
-    left: 0;
+  .timeline-item::after,
+  .timeline-item:nth-child(odd)::after,
+  .timeline-item:nth-child(even)::after {
+    left: 20px;
+    transform: translateX(-50%);
+    top: 30px;
   }
-
-  .timeline-item::after {
-    left: 10px;
-  }
-
-  .timeline-item:nth-child(odd)::after {
-    right: auto;
-    left: 10px;
-  }
+  /* END UPDATED RESPONSIVE TIMELINE */
 
   .btn-large {
     padding: 15px 30px;
@@ -647,4 +681,65 @@ p {
   .section-description {
     font-size: 1.1em;
   }
+}
+
+/* --- Decorative Background Images --- */
+
+/* 1. The parent section needs a positioning context */
+#logistics {
+  position: relative;
+  overflow: hidden; /* Prevents images from spilling out */
+}
+
+/* 2. Container for the images */
+.timeline-bg-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Puts this layer behind the timeline */
+  pointer-events: none; /* Allows clicks to go through to the timeline */
+}
+
+/* 3. General styling for all background images */
+.bg-image {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0.25; /* Very subtle */
+  filter: blur(2px); /* Soft, out-of-focus look */
+  border-radius: 20px;
+}
+
+/* 4. Individual positions and sizes for each image */
+.bg-image-1 {
+  width: 600px;
+  height: 350px;
+  top: 18%;
+  left: 20%;
+  transform: rotate(-5deg);
+}
+
+.bg-image-2 {
+  width: 600px;
+  height: 400px;
+  bottom: 50%;
+  right: 20%;
+  transform: rotate(15deg); /* Adds a little variation */
+}
+
+.bg-image-3 {
+  width: 350px;
+  height: 500px;
+  top: 52%;
+  right: 40%;
+  transform: rotate(-2deg);
+}
+
+.bg-image-4 {
+  width: 750px;
+  height: 400px;
+  top: 70%;
+  right: 40%;
+  transform: rotate(30deg);
 }
