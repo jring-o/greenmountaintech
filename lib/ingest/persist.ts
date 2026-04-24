@@ -9,7 +9,7 @@
  */
 
 import { and, eq, ne, sql } from 'drizzle-orm';
-import type { NeonHttpDatabase } from 'drizzle-orm/neon-http';
+import type { NeonDatabase } from 'drizzle-orm/neon-serverless';
 
 import type { Logger } from '@/lib/adapters/types';
 import { events } from '@/lib/db/schema';
@@ -32,7 +32,7 @@ export type PersistResult =
   | 'dedup_skipped';
 
 export type PersistContext = {
-  db: NeonHttpDatabase<Record<string, unknown>>;
+  db: NeonDatabase<Record<string, unknown>>;
   log: Logger;
   now: () => Date;
 };

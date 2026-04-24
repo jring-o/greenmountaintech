@@ -10,7 +10,7 @@
 
 import { formatInTimeZone } from 'date-fns-tz';
 import { and, between, inArray, ne } from 'drizzle-orm';
-import type { NeonHttpDatabase } from 'drizzle-orm/neon-http';
+import type { NeonDatabase } from 'drizzle-orm/neon-serverless';
 import { token_set_ratio } from 'fuzzball';
 
 import type { Logger } from '@/lib/adapters/types';
@@ -64,7 +64,7 @@ export type FuzzyCandidate = {
 };
 
 export type FuzzyDedupeContext = {
-  db: NeonHttpDatabase<Record<string, unknown>>;
+  db: NeonDatabase<Record<string, unknown>>;
   log: Logger;
 };
 
