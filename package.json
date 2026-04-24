@@ -20,7 +20,10 @@
     "prepare": "husky",
     "seed:fixtures": "tsx --env-file-if-exists=.env.local scripts/seed-fixtures.ts",
     "seed:sources": "tsx --env-file-if-exists=.env.local scripts/seed-sources.ts",
-    "add:vcet": "tsx --env-file-if-exists=.env.local scripts/add-vcet.ts"
+    "add:vcet": "tsx --env-file-if-exists=.env.local scripts/add-vcet.ts",
+    "add:meetup": "tsx --env-file-if-exists=.env.local scripts/add-meetup.ts",
+    "wipe:events": "tsx --env-file-if-exists=.env.local scripts/wipe-events.ts",
+    "add:category:tech": "tsx --env-file-if-exists=.env.local scripts/add-category-tech.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
@@ -32,6 +35,7 @@
     "@fullcalendar/react": "^6.1.20",
     "@fullcalendar/timegrid": "^6.1.20",
     "@neondatabase/serverless": "^1.1.0",
+    "@sparticuz/chromium-min": "^147.0.2",
     "@vercel/blob": "^2.3.3",
     "cheerio": "^1.2.0",
     "chrono-node": "^2.9.0",
@@ -46,6 +50,7 @@
     "next": "^16.0.0",
     "node-ical": "^0.26.0",
     "p-limit": "^7.3.0",
+    "playwright-core": "^1.59.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "robots-parser": "^3.0.1",

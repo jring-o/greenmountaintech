@@ -28,6 +28,7 @@ const CATEGORY_OPTIONS: readonly { value: string; label: string }[] = [
   { value: 'sports', label: 'Sports' },
   { value: 'farmers_market', label: "Farmers' Market" },
   { value: 'fundraiser', label: 'Fundraiser' },
+  { value: 'tech', label: 'Tech' },
   { value: 'other', label: 'Other' },
 ] as const;
 

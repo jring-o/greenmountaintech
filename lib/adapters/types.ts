@@ -26,6 +26,7 @@ export type EventCategory =
   | 'sports'
   | 'farmers_market'
   | 'fundraiser'
+  | 'tech'
   | 'other';
 
 /* ------------------------------------------------------------------ */

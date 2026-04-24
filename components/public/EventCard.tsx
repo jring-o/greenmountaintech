@@ -16,6 +16,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   sports: 'Sports',
   farmers_market: 'Market',
   fundraiser: 'Fundraiser',
+  tech: 'Tech',
   other: 'Other',
 };
 

@@ -55,6 +55,7 @@ export const eventCategoryEnum = pgEnum('event_category', [
   'sports',
   'farmers_market',
   'fundraiser',
+  'tech',
   'other',
 ]);
 
