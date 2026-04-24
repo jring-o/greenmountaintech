@@ -22,7 +22,9 @@ const SOURCE = {
   adapter_type: 'rss' as const,
   adapter_key: 'generic',
   url: 'https://vcet.co/category/events/feed/',
-  adapter_config: {} as Record<string, unknown>,
+  // VCET's RSS items are blog posts; pubDate = publish time, not event time.
+  // Use chrono-node on the body to find the event date in the text/slug.
+  adapter_config: { parseDatesFromBody: true } as Record<string, unknown>,
   trust_level: 'auto_publish' as const,
   is_active: true,
   rate_limit_per_min: 30,
