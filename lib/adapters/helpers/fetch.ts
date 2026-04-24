@@ -93,7 +93,7 @@ export function createFetch(
   return async (url: string, init?: RequestInit): Promise<Response> => {
     // 1. Robots check
     if (source.robots_respect) {
-      const allowed = await isAllowed(url, 'VermontEventsBot');
+      const allowed = await isAllowed(url, 'VermontEventsBot', log);
       if (!allowed) {
         log.warn('robots.txt disallows URL', { url });
         throw new RobotsDisallowedError(url);

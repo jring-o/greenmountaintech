@@ -18,8 +18,9 @@
     "db:migrate": "drizzle-kit migrate",
     "format": "prettier --write .",
     "prepare": "husky",
-    "seed:fixtures": "tsx scripts/seed-fixtures.ts",
-    "seed:sources": "tsx scripts/seed-sources.ts"
+    "seed:fixtures": "tsx --env-file-if-exists=.env.local scripts/seed-fixtures.ts",
+    "seed:sources": "tsx --env-file-if-exists=.env.local scripts/seed-sources.ts",
+    "add:vcet": "tsx --env-file-if-exists=.env.local scripts/add-vcet.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

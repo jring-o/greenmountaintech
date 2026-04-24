@@ -1,5 +1,7 @@
 import robotsParser from 'robots-parser';
 
+import type { Logger } from '../types';
+
 const DEFAULT_UA = 'VermontEventsBot';
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 const MAX_CACHE_SIZE = 256;
@@ -29,22 +31,32 @@ function evictOldest(): void {
 /*  fetchRobotsTxt                                                     */
 /* ------------------------------------------------------------------ */
 
-async function fetchRobotsTxt(host: string): Promise<CacheEntry> {
+async function fetchRobotsTxt(host: string, log?: Logger): Promise<CacheEntry> {
   const robotsUrl = `https://${host}/robots.txt`;
   let body = '';
+  let status = 0;
+  let fetchError: string | undefined;
 
   try {
     const res = await fetch(robotsUrl, {
       signal: AbortSignal.timeout(10_000),
       headers: { 'User-Agent': DEFAULT_UA },
     });
+    status = res.status;
     if (res.ok) {
       body = await res.text();
     }
-    // On 4xx/5xx we treat as "no robots.txt" → allow everything
-  } catch {
-    // Network error → allow everything
+  } catch (e) {
+    fetchError = e instanceof Error ? e.message : String(e);
   }
+
+  log?.warn('robots fetched', {
+    robotsUrl,
+    status,
+    bodyLen: body.length,
+    bodyPreview: body.slice(0, 300),
+    fetchError,
+  });
 
   const robot = robotsParser(robotsUrl, body);
   const entry: CacheEntry = {
@@ -68,15 +80,22 @@ async function fetchRobotsTxt(host: string): Promise<CacheEntry> {
  *
  * Results are cached per host for 1 hour (LRU, max 256 hosts).
  */
-export async function isAllowed(url: string, ua: string = DEFAULT_UA): Promise<boolean> {
+export async function isAllowed(
+  url: string,
+  ua: string = DEFAULT_UA,
+  log?: Logger,
+): Promise<boolean> {
   const host = new URL(url).host;
 
+  const fromCache = cache.has(host);
   let entry = cache.get(host);
   if (!entry || Date.now() >= entry.expiresAt) {
-    entry = await fetchRobotsTxt(host);
+    entry = await fetchRobotsTxt(host, log);
   }
 
-  return entry.robot.isAllowed(url, ua) !== false;
+  const verdict = entry.robot.isAllowed(url, ua);
+  log?.warn('robots verdict', { url, ua, verdict, fromCache });
+  return verdict !== false;
 }
 
 /** @internal – exposed for unit tests to reset between runs. */
