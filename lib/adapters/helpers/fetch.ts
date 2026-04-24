@@ -3,7 +3,7 @@ import { env } from '@/lib/env';
 import type { FetchFn, Logger } from '../types';
 import { RobotsDisallowedError } from '../types';
 
-import { isAllowed } from './robots';
+import { getLastRobotsFetch, isAllowed } from './robots';
 
 /* ------------------------------------------------------------------ */
 /*  User-Agent                                                         */
@@ -95,8 +95,12 @@ export function createFetch(
     if (source.robots_respect) {
       const allowed = await isAllowed(url, 'VermontEventsBot', log);
       if (!allowed) {
-        log.warn('robots.txt disallows URL', { url });
-        throw new RobotsDisallowedError(url);
+        const last = getLastRobotsFetch(url);
+        const diag = last
+          ? `status=${last.status} bodyLen=${last.bodyLen} preview=${JSON.stringify(last.bodyPreview)}${last.fetchError ? ` fetchError=${last.fetchError}` : ''}`
+          : 'no fetch diagnostics (cache hit before instrumentation)';
+        log.warn('robots.txt disallows URL', { url, diag });
+        throw new RobotsDisallowedError(`${url} (${diag})`);
       }
     }
 

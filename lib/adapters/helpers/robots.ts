@@ -57,6 +57,12 @@ async function fetchRobotsTxt(host: string, log?: Logger): Promise<CacheEntry> {
     bodyPreview: body.slice(0, 300),
     fetchError,
   });
+  lastFetchByHost.set(host, {
+    status,
+    bodyLen: body.length,
+    bodyPreview: body.slice(0, 300),
+    ...(fetchError !== undefined ? { fetchError } : {}),
+  });
 
   const robot = robotsParser(robotsUrl, body);
   const entry: CacheEntry = {
@@ -80,6 +86,15 @@ async function fetchRobotsTxt(host: string, log?: Logger): Promise<CacheEntry> {
  *
  * Results are cached per host for 1 hour (LRU, max 256 hosts).
  */
+interface LastFetch {
+  status: number;
+  bodyLen: number;
+  bodyPreview: string;
+  fetchError?: string;
+}
+
+const lastFetchByHost = new Map<string, LastFetch>();
+
 export async function isAllowed(
   url: string,
   ua: string = DEFAULT_UA,
@@ -87,15 +102,24 @@ export async function isAllowed(
 ): Promise<boolean> {
   const host = new URL(url).host;
 
-  const fromCache = cache.has(host);
   let entry = cache.get(host);
   if (!entry || Date.now() >= entry.expiresAt) {
     entry = await fetchRobotsTxt(host, log);
   }
 
   const verdict = entry.robot.isAllowed(url, ua);
-  log?.warn('robots verdict', { url, ua, verdict, fromCache });
+  log?.warn('robots verdict', { url, ua, verdict });
   return verdict !== false;
+}
+
+/**
+ * Returns diagnostics from the most recent robots.txt fetch for the
+ * URL's host (or undefined if the host's robots.txt has not yet been
+ * fetched in this process). Use to enrich error messages when
+ * isAllowed() returned false.
+ */
+export function getLastRobotsFetch(url: string): LastFetch | undefined {
+  return lastFetchByHost.get(new URL(url).host);
 }
 
 /** @internal – exposed for unit tests to reset between runs. */

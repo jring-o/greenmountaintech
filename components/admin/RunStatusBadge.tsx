@@ -17,6 +17,22 @@ const statusConfig: Record<string, { label: string; className: string }> = {
     label: 'Running',
     className: 'bg-slate-100 text-slate-700 border-slate-300',
   },
+  published: {
+    label: 'Published',
+    className: 'bg-vermont-forest/15 text-vermont-forest border-vermont-forest/30',
+  },
+  pending_review: {
+    label: 'Pending review',
+    className: 'bg-amber-100 text-amber-800 border-amber-300',
+  },
+  rejected: {
+    label: 'Rejected',
+    className: 'bg-red-100 text-red-800 border-red-300',
+  },
+  duplicate: {
+    label: 'Duplicate',
+    className: 'bg-slate-100 text-slate-700 border-slate-300',
+  },
 };
 
 const fallbackConfig = {
