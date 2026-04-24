@@ -1,11 +1,13 @@
 import type { SourceRow } from '@/lib/db/schema';
 
+import { meetupAdapter } from './headless/meetup';
 import { helloBurlingtonVtAdapter } from './html/hello-burlington-vt';
 import { sevenDaysAdapter } from './html/seven-days';
 import { vermontComAdapter } from './html/vermont-com';
 import { vermontPublicAdapter } from './html/vermont-public';
 import { icalAdapter } from './ical';
 import { rssAdapter } from './rss';
+import { vcetAdapter } from './rss-vcet';
 import type { Adapter } from './types';
 import { UnknownAdapterError } from './types';
 
@@ -52,10 +54,12 @@ export function resolveAdapter(source: SourceRow): Adapter {
 
 registerAdapter('ical', 'generic', icalAdapter);
 registerAdapter('rss', 'generic', rssAdapter);
+registerAdapter('rss', 'vcet', vcetAdapter); // rss:vcet
 registerAdapter('html', 'hello-burlington-vt', helloBurlingtonVtAdapter); // html:hello-burlington-vt
 registerAdapter('html', 'seven-days', sevenDaysAdapter); // html:seven-days
 registerAdapter('html', 'vermont-com', vermontComAdapter); // html:vermont-com
 registerAdapter('html', 'vermont-public', vermontPublicAdapter); // html:vermont-public
+registerAdapter('headless', 'meetup', meetupAdapter); // headless:meetup
 
 /* ------------------------------------------------------------------ */
 /*  Expose registry for testing                                        */
