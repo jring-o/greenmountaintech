@@ -162,6 +162,7 @@ export default function Calendar({ initialView, initialDate }: CalendarProps) {
         datesSet={handleDatesSet}
         eventClick={handleEventClick}
         eventContent={(arg) => <EventCard event={arg} />}
+        eventDisplay="block"
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',

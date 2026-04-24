@@ -30,7 +30,7 @@ export default function EventCard({ event }: { event: EventContentArg }) {
   const tags = extendedProps.tags as string[] | undefined;
 
   return (
-    <div className="flex flex-col gap-0.5 overflow-hidden px-1 py-0.5">
+    <div className="flex cursor-pointer flex-col gap-0.5 overflow-hidden px-1 py-0.5">
       <span className="truncate text-xs font-semibold leading-tight text-white">{title}</span>
       {venueName ? (
         <span className="truncate text-[10px] leading-tight text-white/80">{venueName}</span>

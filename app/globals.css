@@ -171,6 +171,15 @@
 .vermont-calendar .fc .fc-daygrid-event {
   border-radius: 3px;
   font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.vermont-calendar .fc .fc-event {
+  cursor: pointer;
+}
+
+.vermont-calendar .fc .fc-event:hover {
+  filter: brightness(1.1);
 }
 
 .vermont-calendar .fc .fc-day-today {
