@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Events | Seven Days | Vermont's Independent Voice</title>
+</head>
+<body>
+  <div class="event-listing-container">
+
+    <!-- Event 1: Full event with all fields -->
+    <div data-type="event" class="event-card">
+      <img src="https://community.sevendaysvt.com/images/jazz-fest-2025.jpg" alt="Burlington Jazz Festival" />
+      <h3><a class="event-title" href="/vermont/Events/Details/98765/burlington-jazz-festival">Burlington Jazz Festival</a></h3>
+      <span class="event-date">Saturday, May 17, 2025, 7:00 PM</span>
+      <span class="event-end-date">Saturday, May 17, 2025, 11:00 PM</span>
+      <span class="event-venue">Waterfront Park</span>
+      <span class="event-address">100 Lake Street, Burlington, VT 05401</span>
+      <span class="event-category">Music</span>
+      <div class="event-description"><p>Annual jazz festival featuring local and national artists on the Burlington waterfront.</p></div>
+    </div>
+
+    <!-- Event 2: Event without end time or description (detail page needed) -->
+    <div data-type="event" class="event-card">
+      <img src="https://community.sevendaysvt.com/images/farmers-market.jpg" alt="Burlington Farmers Market" />
+      <h3><a class="event-title" href="/vermont/Events/Details/87654/burlington-farmers-market">Burlington Farmers Market</a></h3>
+      <span class="event-date">Saturday, May 17, 2025, 9:00 AM</span>
+      <span class="event-venue">City Hall Park</span>
+      <span class="event-address">149 Church Street, Burlington, VT 05401</span>
+      <span class="event-category">Farmers Market</span>
+    </div>
+
+    <!-- Event 3: Event with date-only (no time), minimal fields -->
+    <div data-type="event" class="event-card">
+      <h3><a class="event-title" href="/vermont/Events/Details/76543/open-studio-weekend">Open Studio Weekend</a></h3>
+      <span class="event-date">May 17, 2025</span>
+      <span class="event-venue">Various Locations</span>
+      <span class="event-category">Arts</span>
+    </div>
+
+    <!-- Event 4: Card missing a date entirely (should be skipped) -->
+    <div data-type="event" class="event-card">
+      <h3><a class="event-title" href="/vermont/Events/Details/65432/tba-event">TBA Community Event</a></h3>
+      <span class="event-venue">Community Center</span>
+      <span class="event-category">Community</span>
+    </div>
+
+    <!-- Event 5: Card missing title entirely (should be skipped) -->
+    <div data-type="event" class="event-card">
+      <span class="event-date">May 18, 2025, 3:00 PM</span>
+      <span class="event-venue">Somewhere</span>
+    </div>
+
+  </div>
+</body>
+</html>

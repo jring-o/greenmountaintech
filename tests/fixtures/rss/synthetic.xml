@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Vermont Events RSS Feed</title>
+    <link>https://example.com/events</link>
+    <description>Test RSS feed for Vermont events</description>
+
+    <!-- Item 1: Has pubDate, guid, and link -->
+    <item>
+      <title>Burlington Jazz Festival</title>
+      <link>https://example.com/events/jazz-fest</link>
+      <guid>rss-item-001</guid>
+      <pubDate>Wed, 14 May 2025 19:00:00 -0400</pubDate>
+      <description><![CDATA[<p>Annual jazz festival at Waterfront Park.</p>]]></description>
+      <content:encoded><![CDATA[<p>Annual jazz festival at Waterfront Park.</p>]]></content:encoded>
+    </item>
+
+    <!-- Item 2: No pubDate, no extractable body date, no guid -->
+    <item>
+      <title>Community Gathering</title>
+      <link>https://example.com/events/community</link>
+      <description><![CDATA[<p>A great community event with no specific date mentioned.</p>]]></description>
+      <content:encoded><![CDATA[<p>A great community event with no specific date mentioned.</p>]]></content:encoded>
+    </item>
+
+    <!-- Item 3: No pubDate, but body contains "May 14 at 7pm" parseable by chrono, no guid -->
+    <item>
+      <title>Farmers Market Opening</title>
+      <link>https://example.com/events/farmers-market</link>
+      <description><![CDATA[<p>Join us May 14 at 7pm for the opening of the farmers market season.</p>]]></description>
+      <content:encoded><![CDATA[<p>Join us May 14 at 7pm for the opening of the farmers market season.</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Sky -->
+  <rect width="800" height="450" fill="#FAF7F2"/>
+  <!-- Mountains - back range -->
+  <path d="M0 320 L120 180 L200 240 L300 160 L420 230 L500 150 L600 220 L700 170 L800 260 L800 450 L0 450Z" fill="#2D5F2D" opacity="0.3"/>
+  <!-- Mountains - front range -->
+  <path d="M0 350 L80 250 L180 300 L280 220 L380 280 L480 200 L580 270 L680 230 L800 310 L800 450 L0 450Z" fill="#2D5F2D" opacity="0.5"/>
+  <!-- Foreground hills -->
+  <path d="M0 380 L100 340 L250 360 L400 330 L550 355 L700 340 L800 370 L800 450 L0 450Z" fill="#2D5F2D" opacity="0.8"/>
+  <!-- Ground -->
+  <rect y="400" width="800" height="50" fill="#2D5F2D"/>
+  <!-- Horizontal line accent -->
+  <line x1="250" y1="395" x2="550" y2="395" stroke="#4A5568" stroke-width="1" opacity="0.3"/>
+</svg>

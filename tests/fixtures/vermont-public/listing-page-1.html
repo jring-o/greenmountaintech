@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vermont Events Calendar | Vermont Public</title>
+</head>
+<body>
+  <div class="Page-content">
+    <div class="vermont-events-calendar">
+
+      <!-- Event 1: Full event with all fields -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 17</span>
+          <span class="PromoEvent-date-day">Saturday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=abc123">Music</a></li>
+        </ul>
+        <div class="PromoEvent-info">
+          <span class="PromoEvent-location">Location: Chittenden County</span>
+        </div>
+        <h3><a href="/vermont-events-calendar/event/burlington-jazz-weekend-05-01-2025-12-00-00">Burlington Jazz Weekend</a></h3>
+        <div class="PromoEvent-venue">Waterfront Park</div>
+        <div class="PromoEvent-time">07:00 PM - 11:00 PM on Sat, 17 May 2025</div>
+        <div class="PromoEvent-description"><p>Annual jazz celebration featuring Vermont musicians and national acts on the Burlington waterfront. Food vendors and family activities all evening.</p></div>
+        <a href="/vermont-events-calendar/event/burlington-jazz-weekend-05-01-2025-12-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 2: Event with date range and price -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 18</span>
+          <span class="PromoEvent-date-day">Sunday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=def456">Film</a></li>
+        </ul>
+        <div class="PromoEvent-info">
+          <span class="PromoEvent-location">Location: Chittenden County</span>
+        </div>
+        <h3><a href="/vermont-events-calendar/event/green-mountain-film-fest-05-02-2025-10-30-00">Green Mountain Film Fest</a></h3>
+        <div class="PromoEvent-venue">Main Street Landing</div>
+        <div class="PromoEvent-time">10:00 AM - 09:00 PM on Sun, 18 May 2025</div>
+        <div class="PromoEvent-price">$15</div>
+        <div class="PromoEvent-description"><p>Three days of independent films from New England filmmakers. Panel discussions and Q&amp;A sessions with directors.</p></div>
+        <a href="/vermont-events-calendar/event/green-mountain-film-fest-05-02-2025-10-30-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 3: Event with minimal info, no description (detail page needed) -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 19</span>
+          <span class="PromoEvent-date-day">Monday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=ghi789">Community</a></li>
+        </ul>
+        <div class="PromoEvent-info">
+          <span class="PromoEvent-location">Location: Central Vermont</span>
+        </div>
+        <h3><a href="/vermont-events-calendar/event/montpelier-town-meeting-05-03-2025-14-00-00">Montpelier Town Meeting Day Celebration</a></h3>
+        <div class="PromoEvent-venue">Montpelier City Hall</div>
+        <div class="PromoEvent-time">06:00 PM - 08:30 PM on Mon, 19 May 2025</div>
+        <a href="/vermont-events-calendar/event/montpelier-town-meeting-05-03-2025-14-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 4: Missing date entirely (edge case - should be skipped) -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date"></span>
+          <span class="PromoEvent-date-day"></span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=jkl012">Theater &amp; Dance</a></li>
+        </ul>
+        <h3><a href="/vermont-events-calendar/event/tba-theater-show-05-04-2025-09-00-00">TBA Theater Production</a></h3>
+        <div class="PromoEvent-venue">Flynn Center</div>
+        <div class="PromoEvent-time"></div>
+        <a href="/vermont-events-calendar/event/tba-theater-show-05-04-2025-09-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 5: Missing title (edge case - should be skipped) -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 20</span>
+          <span class="PromoEvent-date-day">Tuesday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=mno345">Education</a></li>
+        </ul>
+        <h3><a href="/vermont-events-calendar/event/unnamed-05-05-2025-10-00-00"></a></h3>
+        <div class="PromoEvent-venue">Local Library</div>
+        <div class="PromoEvent-time">02:00 PM - 04:00 PM on Tue, 20 May 2025</div>
+        <a href="/vermont-events-calendar/event/unnamed-05-05-2025-10-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 6: Farmers market with recurring schedule -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 17</span>
+          <span class="PromoEvent-date-day">Saturday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=pqr678">Food &amp; Drink</a></li>
+        </ul>
+        <div class="PromoEvent-info">
+          <span class="PromoEvent-location">Location: Chittenden County</span>
+        </div>
+        <h3><a href="/vermont-events-calendar/event/burlington-farmers-market-04-15-2025-08-00-00">Burlington Farmers Market</a></h3>
+        <div class="PromoEvent-venue">City Hall Park</div>
+        <div class="PromoEvent-time">09:00 AM - 02:00 PM, every Saturday through Oct 25, 2025</div>
+        <div class="PromoEvent-description"><p>Fresh local produce, artisan goods, and live music every Saturday morning in downtown Burlington.</p></div>
+        <a href="/vermont-events-calendar/event/burlington-farmers-market-04-15-2025-08-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+      <!-- Event 7: Art exhibit with free admission -->
+      <div class="PromoEvent">
+        <div class="PromoEvent-date">
+          <span class="PromoEvent-date-date">May 18</span>
+          <span class="PromoEvent-date-day">Sunday</span>
+        </div>
+        <ul class="PromoEvent-categories">
+          <li><a href="/vermont-events-calendar?f0=stu901">Art &amp; Museum Exhibits</a></li>
+        </ul>
+        <div class="PromoEvent-info">
+          <span class="PromoEvent-location">Location: Addison/Rutland</span>
+        </div>
+        <h3><a href="/vermont-events-calendar/event/shelburne-museum-opening-05-06-2025-11-00-00">Shelburne Museum Spring Opening</a></h3>
+        <div class="PromoEvent-venue">Shelburne Museum</div>
+        <div class="PromoEvent-time">10:00 AM - 05:00 PM on Sun, 18 May 2025</div>
+        <div class="PromoEvent-price">Free</div>
+        <div class="PromoEvent-description"><p>Celebrate the museum's spring opening with guided tours, hands-on art activities, and garden walks across the historic campus.</p></div>
+        <a href="/vermont-events-calendar/event/shelburne-museum-opening-05-06-2025-11-00-00" class="PromoEvent-readMore">Read More</a>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="Pagination">
+      <span class="Pagination-count">1 of 27</span>
+      <a href="?p=2" class="Pagination-next">Next</a>
+    </div>
+  </div>
+</body>
+</html>
