@@ -1,6 +1,8 @@
 import type { SourceRow } from '@/lib/db/schema';
 
-import { meetupAdapter } from './headless/meetup';
+// Meetup adapter is being built in a parallel session; not yet committed.
+// Re-enable this import once lib/adapters/headless/meetup.ts is on main.
+// import { meetupAdapter } from './headless/meetup';
 import { helloBurlingtonVtAdapter } from './html/hello-burlington-vt';
 import { sevenDaysAdapter } from './html/seven-days';
 import { vermontComAdapter } from './html/vermont-com';
@@ -59,7 +61,7 @@ registerAdapter('html', 'hello-burlington-vt', helloBurlingtonVtAdapter); // htm
 registerAdapter('html', 'seven-days', sevenDaysAdapter); // html:seven-days
 registerAdapter('html', 'vermont-com', vermontComAdapter); // html:vermont-com
 registerAdapter('html', 'vermont-public', vermontPublicAdapter); // html:vermont-public
-registerAdapter('headless', 'meetup', meetupAdapter); // headless:meetup
+// registerAdapter('headless', 'meetup', meetupAdapter); // headless:meetup -- pending merge
 
 /* ------------------------------------------------------------------ */
 /*  Expose registry for testing                                        */
