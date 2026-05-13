@@ -19,10 +19,11 @@ import type {
 } from 'node-ical';
 import { z } from 'zod';
 
+import { eventCategoryEnum } from '@/lib/db/schema';
 import { DEFAULT_TZ, toUtc } from '@/lib/tz';
 
 import { isAllowed } from './helpers/robots';
-import type { Adapter, AdapterContext, AdapterEvent } from './types';
+import type { Adapter, AdapterContext, AdapterEvent, EventCategory } from './types';
 import { RobotsDisallowedError } from './types';
 
 /* ------------------------------------------------------------------ */
@@ -38,6 +39,8 @@ const UA = 'VermontEventsBot/1.0';
 const configSchema = z
   .object({
     tzid: z.string().optional(),
+    /** When set, every VEVENT from this feed gets this category (e.g. Meetup tech calendars). */
+    default_category: z.enum(eventCategoryEnum.enumValues).optional(),
   })
   .optional();
 
@@ -108,6 +111,7 @@ export const icalAdapter: Adapter = {
     // 2. Parse config for default TZID override
     const cfg = configSchema.parse(source.adapter_config);
     const defaultTz = cfg?.tzid ?? DEFAULT_TZ;
+    const defaultCategory = cfg?.default_category;
 
     // 3. Fetch + parse the iCal feed
     // The type definitions for fromURL with options claim void return, but at
@@ -140,10 +144,17 @@ export const icalAdapter: Adapter = {
 
       if (event.rrule) {
         // -- Recurring event --
-        yield* expandRecurring(event, now, horizon, defaultTz, isAllDay, log);
+        yield* expandRecurring(event, now, horizon, defaultTz, isAllDay, log, defaultCategory);
       } else {
         // -- Single-occurrence event --
-        yield buildAdapterEvent(event, event.start, event.end, defaultTz, isAllDay);
+        yield buildAdapterEvent(
+          event,
+          event.start,
+          event.end,
+          defaultTz,
+          isAllDay,
+          defaultCategory,
+        );
       }
     }
   },
@@ -160,6 +171,7 @@ function* expandRecurring(
   defaultTz: string,
   isAllDay: boolean,
   log: { debug: (msg: string, extra?: Record<string, unknown>) => void },
+  defaultCategory: EventCategory | undefined,
 ): Generator<AdapterEvent> {
   const occurrences = event.rrule!.between(now, horizon);
   const exdateSet = buildExdateSet(event.exdate);
@@ -176,7 +188,15 @@ function* expandRecurring(
       continue;
     }
 
-    yield buildOccurrenceEvent(event, occDate, occKey, durationMs, defaultTz, isAllDay);
+    yield buildOccurrenceEvent(
+      event,
+      occDate,
+      occKey,
+      durationMs,
+      defaultTz,
+      isAllDay,
+      defaultCategory,
+    );
   }
 }
 
@@ -188,6 +208,7 @@ function buildOccurrenceEvent(
   durationMs: number,
   defaultTz: string,
   isAllDay: boolean,
+  defaultCategory: EventCategory | undefined,
 ): AdapterEvent {
   const override = event.recurrences?.[occKey] as Omit<VEvent, 'recurrences'> | undefined;
 
@@ -198,6 +219,7 @@ function buildOccurrenceEvent(
       override.end as DateWithTimeZone | undefined,
       defaultTz,
       override.datetype === 'date',
+      defaultCategory,
     );
   }
 
@@ -211,7 +233,7 @@ function buildOccurrenceEvent(
       }) as DateWithTimeZone)
     : undefined;
 
-  return buildAdapterEvent(event, occStart, occEnd, defaultTz, isAllDay);
+  return buildAdapterEvent(event, occStart, occEnd, defaultTz, isAllDay, defaultCategory);
 }
 
 /** Collect EXDATE entries into a Set of date-only keys for fast lookup. */
@@ -239,6 +261,7 @@ function buildAdapterEvent(
   end: DateWithTimeZone | undefined,
   defaultTz: string,
   allDay: boolean,
+  defaultCategory: EventCategory | undefined,
 ): AdapterEvent {
   const vEvent = event as VEvent;
   const title = paramVal(vEvent.summary) ?? '';
@@ -262,5 +285,6 @@ function buildAdapterEvent(
     allDay: allDay || undefined,
     venueName: location,
     url: resolvedUrl,
+    ...(defaultCategory ? { category: defaultCategory } : {}),
   };
 }

@@ -18,12 +18,12 @@
     "db:migrate": "drizzle-kit migrate",
     "format": "prettier --write .",
     "prepare": "husky",
-    "seed:fixtures": "tsx --env-file-if-exists=.env.local scripts/seed-fixtures.ts",
-    "seed:sources": "tsx --env-file-if-exists=.env.local scripts/seed-sources.ts",
-    "add:vcet": "tsx --env-file-if-exists=.env.local scripts/add-vcet.ts",
-    "add:meetup": "tsx --env-file-if-exists=.env.local scripts/add-meetup.ts",
-    "wipe:events": "tsx --env-file-if-exists=.env.local scripts/wipe-events.ts",
-    "add:category:tech": "tsx --env-file-if-exists=.env.local scripts/add-category-tech.ts"
+    "seed:fixtures": "tsx --import ./scripts/register-env.ts scripts/seed-fixtures.ts",
+    "seed:sources": "tsx --import ./scripts/register-env.ts scripts/seed-sources.ts",
+    "add:vcet": "tsx --import ./scripts/register-env.ts scripts/add-vcet.ts",
+    "add:meetup": "tsx --import ./scripts/register-env.ts scripts/add-meetup.ts",
+    "wipe:events": "tsx --import ./scripts/register-env.ts scripts/wipe-events.ts",
+    "add:category:tech": "tsx --import ./scripts/register-env.ts scripts/add-category-tech.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

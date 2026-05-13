@@ -196,6 +196,21 @@ describe('ical adapter', () => {
     });
   });
 
+  // ── 7. default_category from adapter_config ──
+  describe('default_category config', () => {
+    it('sets category on every yielded event when configured', async () => {
+      const ctx = buildCtx({
+        adapter_config: { default_category: 'tech' },
+      });
+      const events = await collectEvents(ctx);
+
+      expect(events.length).toBeGreaterThan(0);
+      for (const e of events) {
+        expect(e.category).toBe('tech');
+      }
+    });
+  });
+
   // ── Bonus: RRULE with recurrence override ──
   describe('RRULE with recurrence override', () => {
     it('uses override data for the overridden occurrence', async () => {
