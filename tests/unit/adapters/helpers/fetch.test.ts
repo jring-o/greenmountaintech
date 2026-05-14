@@ -16,6 +16,7 @@ vi.mock('@/lib/env', () => ({
 
 vi.mock('@/lib/adapters/helpers/robots', () => ({
   isAllowed: vi.fn().mockResolvedValue(true),
+  getLastRobotsFetch: vi.fn().mockReturnValue(undefined),
 }));
 
 import { createFetch } from '@/lib/adapters/helpers/fetch';

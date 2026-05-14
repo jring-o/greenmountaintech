@@ -78,7 +78,7 @@ The daily ingestion cron runs via Vercel Cron and hits `/api/cron/ingest`.
 ### Manually Trigger a Run
 
 ```bash
-curl -X POST https://<your-domain>/api/cron/ingest \
+curl https://<your-domain>/api/cron/ingest \
   -H "Authorization: Bearer $CRON_SECRET"
 ```
 

@@ -109,6 +109,7 @@ describe('Enum values', () => {
       'sports',
       'farmers_market',
       'fundraiser',
+      'tech',
       'other',
     ]);
   });

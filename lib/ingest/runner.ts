@@ -5,7 +5,7 @@
  * Enforces a 280s global budget and per-source budget of min(60s, remaining/2).
  */
 
-import { eq, lt, sql, asc } from 'drizzle-orm';
+import { eq, lt, sql } from 'drizzle-orm';
 import pLimit from 'p-limit';
 
 import { assertAllSourceAdaptersResolvable } from '@/lib/adapters/boot-check';
@@ -70,7 +70,7 @@ export async function runAll(
     .select()
     .from(sources)
     .where(eq(sources.is_active, true))
-    .orderBy(asc(sql`${sources.last_run_at} NULLS FIRST`));
+    .orderBy(sql`${sources.last_run_at} ASC NULLS FIRST`);
 
   if (activeSources.length === 0) {
     logger.info('no active sources to ingest');

@@ -41,3 +41,6 @@ next-env.d.ts
 .agent-teams-v2/
 docs/
 CLAUDE.md
+
+# local-only dev scratch (keep on disk, never commit)
+marty-setup.txt

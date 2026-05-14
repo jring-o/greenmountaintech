@@ -539,7 +539,9 @@ describe('S23 seed-sources: package.json has seed:sources script (Deliverable 5)
 
   it('seed:sources uses tsx to run the script', () => {
     const pkg = JSON.parse(fs.readFileSync(PKG_PATH, 'utf-8'));
-    expect(pkg.scripts['seed:sources']).toBe('tsx scripts/seed-sources.ts');
+    expect(pkg.scripts['seed:sources']).toBe(
+      'tsx --import ./scripts/register-env.ts scripts/seed-sources.ts',
+    );
   });
 
   it('tsx is in devDependencies', () => {

@@ -535,7 +535,9 @@ describe('S09 seed-fixtures: package.json has seed:fixtures script', () => {
   it('seed:fixtures uses tsx to run the script', () => {
     const pkgPath = path.resolve(__dirname, '../../package.json');
     const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
-    expect(pkg.scripts['seed:fixtures']).toBe('tsx scripts/seed-fixtures.ts');
+    expect(pkg.scripts['seed:fixtures']).toBe(
+      'tsx --import ./scripts/register-env.ts scripts/seed-fixtures.ts',
+    );
   });
 
   it('tsx is in devDependencies', () => {
